@@ -25,9 +25,11 @@ public class PostRepository {
         if (post.getId() == 0) {
             long newId = idCounter.incrementAndGet();
             post.setId(newId);
+
             posts.put(newId, post);
         } else {
             posts.put(post.getId(), post);
+
             idCounter.updateAndGet(currentValue -> Math.max(currentValue, post.getId()));
         }
 
